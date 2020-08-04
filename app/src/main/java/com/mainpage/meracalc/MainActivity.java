@@ -123,6 +123,21 @@ public class MainActivity extends AppCompatActivity
                 str = str + ques.charAt(i);
             }
         }
+
+        for(int i=(arr.size()-1);i>=0;i--)
+        {
+            if(arr.get(i).equals("%"))
+            {
+                num1 = Double.parseDouble(arr.get(i-1));
+                num2 = Double.parseDouble(arr.get(i+1));
+                Double ans = (num1/num2)*100;
+                String stnum = ans.toString();
+                arr.set(i-1,stnum);
+                arr.remove(i);
+                arr.remove(i+1);
+            }
+        }
+
         for(int i=(arr.size()-1);i>=0;i--)
         {
             if(arr.get(i).equals("/"))
@@ -177,15 +192,17 @@ public class MainActivity extends AppCompatActivity
         }
         ed2.setText(arr.get(0));
 
-     }
+    }
 
 
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         ed1 = findViewById(R.id.ques);
         ed2 = findViewById(R.id.ans);
         //st = ed1.getText().toString();
