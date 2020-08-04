@@ -183,8 +183,8 @@ public class MainActivity extends AppCompatActivity
             {
                 num1 = Double.parseDouble(arr.get(i-1));
                 num2 = Double.parseDouble(arr.get(i+1));
-                Double ans = num1-num2;
-                String stnum = ans.toString();
+                double ans = num1-num2;
+                String stnum = Double.toString(ans);
                 arr.set(i-1,stnum);
                 arr.remove(i);
                 arr.remove(i+1);
