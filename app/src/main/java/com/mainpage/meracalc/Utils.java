@@ -6,7 +6,7 @@ import java.util.List;
 public class Utils
 {
     public List<String> arr = new ArrayList<>();
-    public String str = "";
+    public String st = "";
 
     double num1,num2;
 
@@ -17,14 +17,14 @@ public class Utils
             if(ques.charAt(i)=='+' || ques.charAt(i)=='-' || ques.charAt(i)=='x' ||
                     ques.charAt(i)=='/' || ques.charAt(i)=='%')
             {
-                arr.add(str);
-                str = "";
-                str = str + ques.charAt(i);
-                arr.add(str);
+                arr.add(st);
+                st = "";
+                st = st + ques.charAt(i);
+                arr.add(st);
             }
             else
             {
-                str = str + ques.charAt(i);
+                st = st + ques.charAt(i);
             }
         }
     }
