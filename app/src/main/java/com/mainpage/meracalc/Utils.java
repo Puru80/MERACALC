@@ -6,11 +6,12 @@ import java.util.List;
 public class Utils
 {
     public List<String> arr = new ArrayList<>();
+    public List<String> arr1 = new ArrayList<>();
     public String str = "";
 
     double num1,num2;
 
-    public Utils(String ques)
+    public void bList(String ques)
     {
         for(int i=0;i<ques.length();i++)
         {
@@ -27,6 +28,22 @@ public class Utils
                 str = str + ques.charAt(i);
             }
         }
+    }
+
+    public String brHandler()
+    {
+        for(int i=0; i<arr.size(); i++)
+        {
+            if(arr.get(i) == "(")
+            {
+                while(i<arr.size())
+                {
+
+                    i++;
+                }
+            }
+        }
+        return "String";
     }
 
     public String Compute()

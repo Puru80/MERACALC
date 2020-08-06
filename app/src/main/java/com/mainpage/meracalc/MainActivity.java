@@ -106,7 +106,8 @@ public class MainActivity extends AppCompatActivity
     public void Result(View view)
     {
         String ques = ed1.getText().toString();
-         Utils obj = new Utils(ques);
+         Utils obj = new Utils();
+         obj.bList(ques);
 
         ed2.setText(obj.Compute());
 
