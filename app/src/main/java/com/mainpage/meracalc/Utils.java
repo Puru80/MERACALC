@@ -11,7 +11,7 @@ public class Utils
 
     double num1,num2;
 
-    public void bList(String ques)
+    public void calList(String ques)
     {
         for(int i=0;i<ques.length();i++)
         {
