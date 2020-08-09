@@ -1,11 +1,10 @@
 package com.mainpage.meracalc;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Utils
 {
-    public List<String> arr = new ArrayList<>();
+    public ArrayList<String> arrm = new ArrayList<>();
     public String st = "";
 
     double num1,num2;
@@ -17,19 +16,76 @@ public class Utils
             if(ques.charAt(i)=='+' || ques.charAt(i)=='-' || ques.charAt(i)=='x' ||
                     ques.charAt(i)=='/' || ques.charAt(i)=='%')
             {
-                arr.add(st);
+                arrm.add(st);
                 st = "";
                 st = st + ques.charAt(i);
-                arr.add(st);
+                arrm.add(st);
             }
             else
             {
                 st = st + ques.charAt(i);
             }
         }
+
+        brHandler(arrm);
     }
 
-    public String Compute()
+    public void listMaker(int initial, int last)
+    {
+        ArrayList<String> arr1 = new ArrayList<>();
+
+        if(!arrm.get(initial-1).equals("+") || !arrm.get(initial-1).equals("-") ||
+                !arrm.get(initial-1).equals("x") || !arrm.get(initial-1).equals("/"))
+            arrm.set(initial,"x");
+
+        if(!arrm.get(last+1).equals("+") || !arrm.get(last+1).equals("-") ||
+                !arrm.get(last+1).equals("x") || !arrm.get(last+1).equals("/"))
+            arrm.set(initial,"x");
+
+        for(int i=initial+1;i<last;i++)
+        {
+            arr1.add(arrm.get(i));
+        }
+        String comp = Compute(arr1);
+        arrm.set(initial+1,comp);
+
+        for(int i=initial+2; i<last; i++)
+        {
+            arrm.remove(initial+2);
+        }
+
+        brHandler(arrm);
+    }
+
+    public void brHandler(ArrayList<String> arr)
+    {
+        int i=0;
+
+        while(i<arr.size())
+        {
+            int initial, last;
+            if(arr.get(i).equals("("))
+            {
+                initial  = i;
+                for(int j=i; j<arr.size(); j++)
+                {
+                    if (arr.get(j).equals("("))
+                    {
+                        initial = j;
+                    }
+                    else if(arr.get(j).equals(")"))
+                    {
+                        last = j;
+                        listMaker(initial,last);
+                    }
+                }
+            }
+        }
+        Compute(arrm);
+
+    }
+
+    public String Compute(ArrayList<String> arr)
     {
         for(int i=(arr.size()-1);i>=0;i--)
         {
