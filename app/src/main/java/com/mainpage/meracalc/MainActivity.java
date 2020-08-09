@@ -117,9 +117,8 @@ public class MainActivity extends AppCompatActivity
         String ques = ed1.getText().toString();
         Utils ob = new Utils();
         ob.Util(ques);
-        ArrayList<String> arr = ob.arrm;
 
-        ed2.setText(ob.Compute(arr));
+        ed2.setText(ob.Compute(ob.arrm));
 
         //ed2.setText
 
