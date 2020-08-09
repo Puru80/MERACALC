@@ -43,6 +43,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@drawable/btn_layout"
+                android:onClick="br_l"
                 android:text="@string/btn_brl"
                 android:textColor="@android:color/holo_green_light"
                 android:textSize="40sp" />
@@ -53,6 +54,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@drawable/btn_layout"
+                android:onClick="br_r"
                 android:text="@string/btn_brr"
                 android:textColor="@android:color/holo_green_light"
                 android:textSize="40sp" />

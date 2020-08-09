@@ -65,6 +65,16 @@ public class MainActivity extends AppCompatActivity
         st = st + "9";
         ed1.setText(st);
     }
+    public void br_l(View view)
+    {
+        st = st + "(";
+        ed1.setText(st);
+    }
+    public void br_r(View view)
+    {
+        st = st + ")";
+        ed1.setText(st);
+    }
     public void btn_add(View view)
     {
         st = st + "+";
