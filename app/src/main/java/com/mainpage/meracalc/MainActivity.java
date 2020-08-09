@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity
 {
     EditText ed1 ;
@@ -103,9 +105,13 @@ public class MainActivity extends AppCompatActivity
     public void Result(View view)
     {
         String ques = ed1.getText().toString();
-         Utils ob = new Utils(ques);
+        Utils ob = new Utils();
+        ob.Util(ques);
+        ArrayList<String> arr = ob.arrm;
 
-        ed2.setText(ob.Compute());
+        ed2.setText(ob.Compute(arr));
+
+        //ed2.setText
 
     }
 

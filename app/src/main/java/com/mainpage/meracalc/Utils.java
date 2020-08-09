@@ -9,7 +9,7 @@ public class Utils
 
     double num1,num2;
 
-    public Utils(String ques)
+    public void Util(String ques)
     {
         for(int i=0;i<ques.length();i++)
         {
@@ -81,7 +81,7 @@ public class Utils
                 }
             }
         }
-        Compute(arrm);
+        //Compute(arrm);
 
     }
 
