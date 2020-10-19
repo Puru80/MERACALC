@@ -65,16 +65,6 @@ public class MainActivity extends AppCompatActivity
         st = st + "9";
         ed1.setText(st);
     }
-    public void br_l(View view)
-    {
-        st = st + "(";
-        ed1.setText(st);
-    }
-    public void br_r(View view)
-    {
-        st = st + ")";
-        ed1.setText(st);
-    }
     public void btn_add(View view)
     {
         st = st + "+";
@@ -115,10 +105,10 @@ public class MainActivity extends AppCompatActivity
     public void Result(View view)
     {
         String ques = ed1.getText().toString();
-        Utils ob = new Utils();
-        ob.Util(ques);
+        Utils ob = new Utils(ques);
+        //ob.Util(ques);
 
-        ed2.setText(ob.Compute(ob.arrm));
+        ed2.setText(ob.Compute());
 
         //ed2.setText
 

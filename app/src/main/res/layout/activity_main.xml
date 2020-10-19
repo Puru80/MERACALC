@@ -43,7 +43,6 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@drawable/btn_layout"
-                android:onClick="br_l"
                 android:text="@string/btn_brl"
                 android:textColor="@android:color/holo_green_light"
                 android:textSize="40sp" />
@@ -54,7 +53,6 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@drawable/btn_layout"
-                android:onClick="br_r"
                 android:text="@string/btn_brr"
                 android:textColor="@android:color/holo_green_light"
                 android:textSize="40sp" />
@@ -282,11 +280,11 @@
 
     <EditText
         android:id="@+id/ques"
-        android:layout_width="398dp"
+        android:layout_width="match_parent"
         android:layout_height="51dp"
         android:ems="10"
         android:enabled="false"
-        android:gravity="right"
+        android:gravity="end"
         android:inputType="textPersonName"
         android:textColor="@android:color/white"
         android:textSize="24sp"
