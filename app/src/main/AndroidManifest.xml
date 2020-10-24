@@ -14,7 +14,8 @@
         <uses-library android:name="android.test.base" />
         <uses-library android:name="android.test.mock" />
 
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
