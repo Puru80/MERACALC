@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity
     }
     public void btn_div(View view)
     {
-        st = st + "%";
+        st = st + "/";
         ed1.setText(st);
     }
     public void btn_per(View view)

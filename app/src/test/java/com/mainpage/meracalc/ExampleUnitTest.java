@@ -2,8 +2,6 @@ package com.mainpage.meracalc;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
 /**
  * Example local unit test, which will execute on the development machine (host).
  *
@@ -11,9 +9,19 @@ import static org.junit.Assert.*;
  */
 public class ExampleUnitTest
 {
+    private static final String FAKE_STRING = "10";
+    //private final Context context = ApplicationProvider.getApplicationContext();
+
     @Test
-    public void addition_isCorrect()
+    public void computationTest()
     {
-        assertEquals(4, 2 + 2);
+        Utils obj = new Utils("5+7-2");
+
+        // ...when the string is returned from the object under test...
+        String result = obj.Compute();
+
+        // ...then the result should be the expected one.
+        //assertThat(result).isEqualTo(FAKE_STRING);
+
     }
 }

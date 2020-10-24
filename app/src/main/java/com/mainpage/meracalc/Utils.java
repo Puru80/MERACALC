@@ -2,33 +2,47 @@ package com.mainpage.meracalc;
 
 import java.util.*;
 
-public class Utils
-{
+public class Utils {
     public ArrayList<String> arr = new ArrayList<>();
     public String st = "";
 
-    double num1,num2;
+    double num1, num2;
 
-    public Utils(String ques)
+    public Utils(String ques) 
     {
-        for(int i=0;i<ques.length();i++)
+        for (int i = 0; i < ques.length(); i++)
         {
-            if(ques.charAt(i)=='+' || ques.charAt(i)=='-' || ques.charAt(i)=='x' ||
-                    ques.charAt(i)=='/' || ques.charAt(i)=='%')
-            {
+            if (ques.charAt(i) == '+' /*|| ques.charAt(i)=='-'*/
+                    || ques.charAt(i) == 'x' || ques.charAt(i) == '/' || ques.charAt(i) == '%') {
                 arr.add(st);
                 st = "";
                 st = st + ques.charAt(i);
                 arr.add(st);
+                st = "";
             }
+            ///*
+            else if (ques.charAt(i) == '-')
+            {
+                arr.add(st);
+                arr.add("+");
+                st = "-";
+                //arr.add("+");
+                //arr.add(st);
+                //st = "";
+            }
+            //*/
             else
             {
                 st = st + ques.charAt(i);
             }
         }
 
-        //brHandler(arrm);
+        arr.add(st);
+
     }
+
+    //brHandler(arrm)
+
 
     /*
     public void listMaker(int initial, int last)
@@ -90,60 +104,74 @@ public class Utils
 
     public String Compute()
     {
-        for(int i=0;i<arr.size();i++)
+        int i=0;
+        while(i<arr.size())
         {
             if(arr.get(i).equals("%"))
             {
                 num1 = Double.parseDouble(arr.get(i-1));
                 num2 = Double.parseDouble(arr.get(i+1));
-                double ans = (num1/num2)*100;
-                String stnum = Double.toString(ans);
+                Double ans = (num1/num2)*100;
+                String stnum = ans.toString();
                 arr.set(i-1,stnum);
                 arr.remove(i);
                 arr.remove(i);
+                i=i-1;
             }
+            i++;
         }
+        i=0;
 
-        for(int i=0;i<arr.size();i++)
+        while(i<arr.size())
         {
             if(arr.get(i).equals("/"))
             {
                 num1 = Double.parseDouble(arr.get(i-1));
                 num2 = Double.parseDouble(arr.get(i+1));
-                double ans = num1/num2;
-                String stnum = Double.toString(ans);
+                Double ans = num1/num2;
+                String stnum = ans.toString();
                 arr.set(i-1,stnum);
                 arr.remove(i);
                 arr.remove(i);
+                i--;
             }
+            i++;
         }
-        for(int i=0;i<arr.size();i++)
+        i=0;
+
+        while(i<arr.size())
         {
             if(arr.get(i).equals("x"))
             {
                 num1 = Double.parseDouble(arr.get(i-1));
                 num2 = Double.parseDouble(arr.get(i+1));
-                double ans = num1*num2;
-                String stnum = Double.toString(ans);
+                Double ans = num1*num2;
+                String stnum = ans.toString();
                 arr.set(i-1,stnum);
                 arr.remove(i);
                 arr.remove(i);
+                i--;
             }
+            i++;
         }
-        for(int i=0;i<arr.size();i++)
+        i=0;
+        int j=0;
+        while(j<arr.size())
         {
-            if(arr.get(i).equals("+"))
+            if(arr.get(j).equals("+"))
             {
-                num1 = Double.parseDouble(arr.get(i-1));
-                num2 = Double.parseDouble(arr.get(i+1));
-                double ans = num1+num2;
-                String stnum = Double.toString(ans);
-                arr.set(i-1,stnum);
-                arr.remove(i);
-                arr.remove(i);
+                num1 = Double.parseDouble(arr.get(j-1));
+                num2 = Double.parseDouble(arr.get(j+1));
+                Double ans = num1+num2;
+                String stnum = ans.toString();
+                arr.set(j-1,stnum);
+                arr.remove(j);
+                arr.remove(j);
+                j=j-1;
             }
+            j++;
         }
-        for(int i=0;i<arr.size();i++)
+        while(i<arr.size())
         {
             if(arr.get(i).equals("-"))
             {
@@ -154,7 +182,9 @@ public class Utils
                 arr.set(i-1,stnum);
                 arr.remove(i);
                 arr.remove(i);
+                i--;
             }
+            i++;
         }
 
         return arr.get(0);
