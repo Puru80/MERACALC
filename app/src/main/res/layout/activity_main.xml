@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/background_dark"
-    android:onClick="btn_per"
     tools:context=".MainActivity">
 
     <LinearLayout
@@ -38,13 +37,13 @@
                 android:textSize="40sp" />
 
             <Button
-                android:id="@+id/btn_brl"
+                android:id="@+id/btn_history"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/btn_layout"
-                android:text="@string/btn_brl"
+                android:background="@drawable/ic_baseline_history_24"
                 android:textColor="@android:color/holo_green_light"
+                android:onClick="History"
                 android:textSize="40sp" />
 
             <Button

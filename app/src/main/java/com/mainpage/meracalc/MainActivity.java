@@ -2,16 +2,16 @@ package com.mainpage.meracalc;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-
-import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity
 {
     EditText ed1 ;
     EditText ed2 ;
+    Utils ob;
 
     public String st = "";
 
@@ -102,20 +102,41 @@ public class MainActivity extends AppCompatActivity
         st = "";
     }
 
+    public void History(View view)
+    {
+        Intent i = new Intent(MainActivity.this,History.class);
+        i.putStringArrayListExtra("arh",ob.history);
+        startActivity(i);
+        //onPause();
+    }
+
     public void Result(View view)
     {
-        String ques = ed1.getText().toString();
-        Utils ob = new Utils(ques);
-        //ob.Util(ques);
 
-        ed2.setText(ob.Compute());
+        String ques = ed1.getText().toString();
+        //Utils ob = new Utils();
+        //ob.Util(ques);
+        ob.listCon(ques);
+        String answer = ob.Compute();
+        ed2.setText(answer);
 
         //ed2.setText
 
+        ob.listHistory(ques,answer);
+
     }
 
+    @Override
+    protected void onPause()
+    {
+        super.onPause();
+    }
 
-
+    @Override
+    protected void onResume()
+    {
+        super.onResume();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -126,5 +147,7 @@ public class MainActivity extends AppCompatActivity
         ed1 = findViewById(R.id.ques);
         ed2 = findViewById(R.id.ans);
         //st = ed1.getText().toString();
+
+        ob = new Utils();
     }
 }
