@@ -116,13 +116,15 @@ public class MainActivity extends AppCompatActivity
         String ques = ed1.getText().toString();
         //Utils ob = new Utils();
         //ob.Util(ques);
-        ob.listCon(ques);
-        String answer = ob.Compute();
-        ed2.setText(answer);
-
-        //ed2.setText
-
-        ob.listHistory(ques,answer);
+        if(ob.stringCheck(ques))
+        {
+            ob.listCon(ques);
+            String answer = ob.Compute();
+            ed2.setText(answer);
+            ob.listHistory(ques, answer);
+        }
+        else
+            ed2.setText("Invalid expression");
 
     }
 

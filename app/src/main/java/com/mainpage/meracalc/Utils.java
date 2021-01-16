@@ -8,8 +8,17 @@ public class Utils
     public String st = "";
 
     public ArrayList<String> history = new ArrayList<>();
-    int index=0;
+//    int index=0;
     double num1, num2;
+
+    public boolean Sign(String ques, int i)
+    {
+        boolean success = false;
+        if (ques.charAt(i) == '+' || ques.charAt(i)=='-'
+                || ques.charAt(i) == 'x' || ques.charAt(i) == '/' || ques.charAt(i) == '%')
+            success = true;
+        return success;
+    }
 
     public void listCon(String ques)
     {
@@ -42,6 +51,7 @@ public class Utils
         }
 
         arr.add(st);
+        st = "";
 
     }
 
@@ -115,8 +125,8 @@ public class Utils
             {
                 num1 = Double.parseDouble(arr.get(i-1));
                 num2 = Double.parseDouble(arr.get(i+1));
-                Double ans = (num1*num2)/(double)100;
-                String stnum = ans.toString();
+                double ans = (num1*num2)/(double)100;
+                String stnum = Double.toString(ans);
                 arr.set(i-1,stnum);
                 arr.remove(i);
                 arr.remove(i);
@@ -132,12 +142,12 @@ public class Utils
             {
                 num1 = Double.parseDouble(arr.get(i-1));
                 num2 = Double.parseDouble(arr.get(i+1));
-                Double ans = num1/num2;
-                String stnum = ans.toString();
+                double ans = num1/num2;
+                String stnum = Double.toString(ans);
                 arr.set(i-1,stnum);
                 arr.remove(i);
                 arr.remove(i);
-                i--;
+                i=i-1;
             }
             i++;
         }
@@ -149,12 +159,12 @@ public class Utils
             {
                 num1 = Double.parseDouble(arr.get(i-1));
                 num2 = Double.parseDouble(arr.get(i+1));
-                Double ans = num1*num2;
-                String stnum = ans.toString();
+                double ans = num1*num2;
+                String stnum = Double.toString(ans);
                 arr.set(i-1,stnum);
                 arr.remove(i);
                 arr.remove(i);
-                i--;
+                i=i-1;
             }
             i++;
         }
@@ -166,8 +176,8 @@ public class Utils
             {
                 num1 = Double.parseDouble(arr.get(j-1));
                 num2 = Double.parseDouble(arr.get(j+1));
-                Double ans = num1+num2;
-                String stnum = ans.toString();
+                double ans = num1+num2;
+                String stnum = Double.toString(ans);
                 arr.set(j-1,stnum);
                 arr.remove(j);
                 arr.remove(j);
@@ -186,13 +196,13 @@ public class Utils
                 arr.set(i-1,stnum);
                 arr.remove(i);
                 arr.remove(i);
-                i--;
+                i=i-1;
             }
             i++;
         }
-        String ans = arr.get(0);
-        arr.remove(0);
-        return ans;
+        String fin_ans = arr.get(0);
+        arr.clear();
+        return fin_ans;
     }
 
     public void listHistory(String ques, String answer)
@@ -200,5 +210,25 @@ public class Utils
         String fin = ques + " = " + answer;
 
         history.add(fin);
+    }
+
+    public boolean stringCheck(String s)
+    {
+        boolean success = true;
+        for(int i=0;i<s.length();i++)
+        {
+            if(i==0 && ((int)s.charAt(0)<48 || (int)s.charAt(0)>57))
+            {
+                success = false;
+                break;
+            }
+            else if(Sign(s, i) && Sign(s, i + 1))
+            {
+                success = false;
+                break;
+            }
+
+        }
+        return success;
     }
 }
