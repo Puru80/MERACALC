@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity
@@ -12,6 +14,8 @@ public class MainActivity extends AppCompatActivity
     EditText ed1 ;
     EditText ed2 ;
     Utils ob;
+    ShuntingYard shy;
+    Button btn_cl;
 
     public String st = "";
 
@@ -101,6 +105,35 @@ public class MainActivity extends AppCompatActivity
         ed2.setText("");
         st = "";
     }
+    public void btn_brr(View view)
+    {
+        st = st + ")";
+        ed1.setText(st);
+    }
+    public void btn_brl(View view)
+    {
+        st = st + "(";
+        ed1.setText(st);
+    }
+
+    View.OnClickListener Clear = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            String ques = ed1.getText().toString();
+            ques = ques.substring(0,ques.length()-1);
+            ed1.setText(ques);
+        }
+    };
+
+    View.OnLongClickListener clearLong = new View.OnLongClickListener() {
+        @Override
+        public boolean onLongClick(View v) {
+            ed1.setText("");
+            st = "";
+            ed2.setText("");
+            return true;
+        }
+    };
 
     public void History(View view)
     {
@@ -118,10 +151,9 @@ public class MainActivity extends AppCompatActivity
         //ob.Util(ques);
         if(ob.stringCheck(ques))
         {
-            ob.listCon(ques);
-            String answer = ob.Compute();
-            ed2.setText(answer);
-            ob.listHistory(ques, answer);
+            String ans = Double.toString(shy.evaluate(ques));
+            ob.listHistory(ques, ans);
+            ed2.setText(ans);
         }
         else
             ed2.setText("Invalid expression");
@@ -151,5 +183,10 @@ public class MainActivity extends AppCompatActivity
         //st = ed1.getText().toString();
 
         ob = new Utils();
+        shy = new ShuntingYard();
+
+        btn_cl = findViewById(R.id.btn_clear);
+        btn_cl.setOnClickListener(Clear);
+        btn_cl.setOnLongClickListener(clearLong);
     }
 }

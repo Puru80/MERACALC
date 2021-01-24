@@ -229,6 +229,16 @@ public class Utils
             }
 
         }
-        return success;
+
+        Stack<Character> checkArr = new Stack<>();
+        for(int i=0;i<s.length();i++)
+        {
+            if(s.charAt(i)=='(')
+                checkArr.push(s.charAt(i));
+            else if(!checkArr.isEmpty() && s.charAt(i)==')' && checkArr.peek()=='(')
+                checkArr.pop();
+
+        }
+        return success && checkArr.isEmpty();
     }
 }
